@@ -1,0 +1,13 @@
+
+
+/* Input Section */
+
+#addButton{
+    width: 30px;
+}
+
+/* To do list SEction */
+
+#todoList{
+    list-style-type: none;
+}
