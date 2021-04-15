@@ -1,12 +1,54 @@
-
-
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+}
+.flex-all-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.todo{
+    width: auto;
+}
+.todo > h1{
+    text-align: center  ;
+}
 /* Input Section */
+.inputSection{
 
+}
+.upperRow{
+    display: flex;
+    justify-content: baseline;
+}
+#inputTask{
+    width: 85%;
+    font-size: 1em;
+    overflow: auto;
+    border-radius: 1em;
+    border: 1px solid black;
+    padding: 0 10px;
+    outline: none;
+}
 #addButton{
-    width: 30px;
+    width: 15%;
+}
+.lowerRow{
+    margin-top: 0.2em;
+}
+#inputDescription{
+    font-family: monospace;
+    font-style: normal;
+    font-size: 1em;
+    border-radius: 1em;
+    border: 1px solid black;
+    padding: 5px 10px;
+    outline: none;
 }
 
-/* To do list SEction */
+/* To do list Section */
 
 #todoList{
     list-style-type: none;

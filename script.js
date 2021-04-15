@@ -18,7 +18,8 @@ function inputTextToList(id){
     if(date.getHours()>12){
         amOrPm = "PM";
     }
-    todoList.innerHTML += `<li id="listId${id}">
+    if(inputTask.innerText.length > 3){
+        todoList.innerHTML += `<li id="listId${id}">
                                 <div>
                                     <h3 id="taskId${id}">${inputTask.value}</h3>
                                     <p id="descriptionId${id}">${inputDescription.value}</p>
@@ -31,6 +32,9 @@ function inputTextToList(id){
                                 </div>
                             </li>`;
     listId++;
+    }else{
+        alert("Text should be longer than ")
+    }
 }
 
 // // Edit tasks from todo list
@@ -43,14 +47,6 @@ function editList(id) {
     currentTask.innerText = editedTask;
     currentDescription.innerText = editedDescription;
 }
-
-
-
-
-
-
-
-
 
 // Delete tasks from todo list
 function deleteList(id){
