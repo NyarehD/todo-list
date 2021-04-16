@@ -3,6 +3,7 @@
 }
 body{
     width: 100%;
+    background-color: goldfffffffff;
 }
 .flex-all-center{
     display: flex;
@@ -52,4 +53,13 @@ body{
 
 #todoList{
     list-style-type: none;
+}
+.list{
+    
+}
+.task{
+
+}
+.description{
+
 }

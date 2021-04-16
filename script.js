@@ -5,10 +5,15 @@ let inputDescription = document.getElementById('inputDescription');
 let listId = 1;
 
 
-
 addButton.addEventListener("click", ()=>{
     inputTextToList(listId);
 });
+
+document.addEventListener("keydown", (e)=>{
+    if(e.code==="Enter"){
+        inputTextToList(listId);
+    }
+})
 
 // Adding tasks to todo list
 function inputTextToList(id){
@@ -18,12 +23,18 @@ function inputTextToList(id){
     if(date.getHours()>12){
         amOrPm = "PM";
     }
-    if(inputTask.innerText.length > 3){
-        todoList.innerHTML += `<li id="listId${id}">
+    // check if the inputTask length is longer than 3
+    // if true, set the edited task
+    // else,  show alert.
+    if(inputTask.value.length > 3){
+        // check if the inputDescription is written
+        // if true, display it within p element
+        // if false, display nothing
+        if(inputDescription.value){
+            todoList.innerHTML += `<li id="listId${id}" class="list">
                                 <div>
-                                    <h3 id="taskId${id}">${inputTask.value}</h3>
-                                    <p id="descriptionId${id}">${inputDescription.value}</p>
-                                    <br>
+                                    <h3 id="taskId${id}" class="task">${inputTask.value}</h3>
+                                    <p id="descriptionId${id}" class="description>${inputDescription.value}</p>
                                     <span>${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
                                 </div>
                                 <div>
@@ -31,15 +42,27 @@ function inputTextToList(id){
                                     <button src="" onclick="deleteList(${id})">Delete</button>
                                 </div>
                             </li>`;
-    listId++;
+        listId++;
+        }else{
+            todoList.innerHTML += `<li id="listId${id}">
+                                <div>
+                                    <h3 id="taskId${id}">${inputTask.value}</h3>
+                                    <span>${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
+                                </div>
+                                <div>
+                                    <button src="/assets/edit-regular.svg" onclick="editList(${id})">edit</button>
+                                    <button src="" onclick="deleteList(${id})">Delete</button>
+                                </div>
+                            </li>`;
+        listId++;
+        }
     }else{
-        alert("Text should be longer than ")
+        alert("Task should be longer than 3 words");
     }
 }
 
-// // Edit tasks from todo list
+// Edit tasks from todo list
 function editList(id) {
-    let currentList = document.getElementById(`listId${id}`);
     let currentTask = document.getElementById(`taskId${id}`);
     let currentDescription = document.getElementById(`descriptionId${id}`);
     let editedTask = window.prompt("Edit your Task.", currentTask.innerText);
