@@ -61,13 +61,48 @@ body{
     width: 100%;
     padding: 0;
 }
+#todoList > li{
+    margin: 5px 0;
+}
+
+
 .list{
     background-color: #fcbf49;
     width: 100%;
-
+    padding: 10px 20px;
+    border-radius: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.list > *{
+    margin: 10px 0;
+}
+.list > div{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.list > div > *{
+    margin: 0;
 }
 .task{
-
+    font-weight: 700;
+    font-size: 32px;
+    width: 80%;
+}
+.list > div > div { 
+    flex: 1 20%;
+}
+.list > div > div > img:first-of-type{
+    width: 50%;
+}
+.list > div > div > img:last-of-type{
+    width: 40%;
 }
 .description{
 

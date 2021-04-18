@@ -34,28 +34,30 @@ function inputTextToList(id){
         // if false, display nothing
         if(inputDescription.value){
             todoList.innerHTML += `<li id="listId${id}" class="list">
-                                <div>
-                                    <h3 id="taskId${id}" class="task">${inputTask.value}</h3>
-                                    <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
-                                    <span>${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
-                                </div>
-                                <div>
-                                    <button src="/assets/edit-regular.svg" onclick="editList(${id})">edit</button>
-                                    <button src="" onclick="deleteList(${id})">Delete</button>
-                                </div>
-                            </li>`;
+                                        <div>
+                                        <p id="taskId${id}" class="task">${inputTask.value}</p>
+                                        <div>
+                                        <img src="/assets/edit-regular.svg" onclick="editList(${id})">
+                                        <img src="/assets/trash-alt-regular.svg" onclick="deleteList(${id})">
+                                        </div>
+                                        </div>
+                                        <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
+                                        <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
+                                
+                                </li>`;
         listId++;
         }else{
-            todoList.innerHTML += `<li id="listId${id}">
-                                <div>
-                                    <h3 id="taskId${id}">${inputTask.value}</h3>
-                                    <span>${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
-                                </div>
-                                <div>
-                                    <button src="/assets/edit-regular.svg" onclick="editList(${id})">edit</button>
-                                    <button src="" onclick="deleteList(${id})">Delete</button>
-                                </div>
-                            </li>`;
+            todoList.innerHTML += `<li id="listId${id}" class="list">
+            <div>
+            <p id="taskId${id}" class="task">${inputTask.value}</p>
+            <div>
+            <img src="/assets/edit-regular.svg" onclick="editList(${id})">
+            <img src="/assets/trash-alt-regular.svg" onclick="deleteList(${id})">
+            </div>
+            </div>
+            <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
+    
+    </li>`;
         listId++;
         }
     }else{
