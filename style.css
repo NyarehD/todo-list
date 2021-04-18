@@ -1,9 +1,11 @@
 *{
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #003049;
 }
 body{
     width: 100%;
-    background-color: goldfffffffff;
+    background-color: #eae2b7;
 }
 .flex-all-center{
     display: flex;
@@ -14,7 +16,7 @@ body{
     width: auto;
 }
 .todo > h1{
-    text-align: center  ;
+    text-align: center;
 }
 /* Input Section */
 .inputSection{
@@ -23,15 +25,17 @@ body{
 .upperRow{
     display: flex;
     justify-content: baseline;
+    height: 3em;
 }
 #inputTask{
     width: 85%;
     font-size: 1em;
     overflow: auto;
+    border: 1px solid rgba(255, 255, 255, 0.322);
     border-radius: 1em;
-    border: 1px solid black;
     padding: 0 10px;
     outline: none;
+    background-color: rgba(255, 255, 255, 0.322);
 }
 #addButton{
     width: 15%;
@@ -42,20 +46,25 @@ body{
 #inputDescription{
     font-family: monospace;
     font-style: normal;
-    font-size: 1em;
+    font-size: 1.3em;
     border-radius: 1em;
-    border: 1px solid black;
-    padding: 5px 10px;
+    border: 1px solid #fddb97;
+    padding: 10px;
     outline: none;
+    background-color: #fddb97;
 }
 
 /* To do list Section */
 
 #todoList{
     list-style-type: none;
+    width: 100%;
+    padding: 0;
 }
 .list{
-    
+    background-color: #fcbf49;
+    width: 100%;
+
 }
 .task{
 

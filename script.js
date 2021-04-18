@@ -1,17 +1,19 @@
 let inputTask = document.getElementById('inputTask');
+let inputDescription = document.getElementById('inputDescription');
 const addButton = document.getElementById('addButton');
 const todoList = document.getElementById('todoList');
-let inputDescription = document.getElementById('inputDescription');
 let listId = 1;
 
 
 addButton.addEventListener("click", ()=>{
     inputTextToList(listId);
+    clear();
 });
 
 document.addEventListener("keydown", (e)=>{
     if(e.code==="Enter"){
         inputTextToList(listId);
+        clear();
     }
 })
 
@@ -34,7 +36,7 @@ function inputTextToList(id){
             todoList.innerHTML += `<li id="listId${id}" class="list">
                                 <div>
                                     <h3 id="taskId${id}" class="task">${inputTask.value}</h3>
-                                    <p id="descriptionId${id}" class="description>${inputDescription.value}</p>
+                                    <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
                                     <span>${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
                                 </div>
                                 <div>
@@ -77,4 +79,10 @@ function deleteList(id){
     if(confirm(`Are you sure you want to delete this task: ${currentTask.innerHTML}?`)){
         todoList.removeChild(document.getElementById(`listId${id}`));
     }
+}
+
+// For clearing input after adding task
+function clear(){
+    inputTask.value = "";
+    inputDescription.value = "";
 }
