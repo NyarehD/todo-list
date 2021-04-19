@@ -13,7 +13,7 @@ body{
     justify-content: center;
 }
 .todo{
-    width: auto;
+    width: 30%;
 }
 .todo > h1{
     text-align: center;
@@ -29,11 +29,11 @@ body{
 }
 #inputTask{
     width: 85%;
-    font-size: 1em;
+    font-size: 1.7em;
     overflow: auto;
     border: 1px solid rgba(255, 255, 255, 0.322);
     border-radius: 1em;
-    padding: 0 10px;
+    padding: 0 15px;
     outline: none;
     background-color: rgba(255, 255, 255, 0.322);
 }
@@ -41,7 +41,7 @@ body{
     width: 15%;
 }
 .lowerRow{
-    margin-top: 0.2em;
+    margin-top: 0.5em;
 }
 #inputDescription{
     font-family: monospace;
@@ -52,6 +52,7 @@ body{
     padding: 10px;
     outline: none;
     background-color: #fddb97;
+    width: 100%;
 }
 
 /* To do list Section */
@@ -92,18 +93,20 @@ body{
 }
 .task{
     font-weight: 700;
-    font-size: 32px;
+    font-size: 22px;
     width: 80%;
+    overflow: wrap;
 }
 .list > div > div { 
     flex: 1 20%;
 }
 .list > div > div > img:first-of-type{
-    width: 50%;
+    width: 36%;
 }
 .list > div > div > img:last-of-type{
-    width: 40%;
+    width: 30%;
 }
 .description{
-
+    flex: 1 100%;
+    font-size: 18px;
 }

@@ -21,58 +21,70 @@ document.addEventListener("keydown", (e)=>{
 function inputTextToList(id){
     let date = new Date();
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let amOrPm = "AM";
-    if(date.getHours()>12){
-        amOrPm = "PM";
-    }
-    // check if the inputTask length is longer than 3
-    // if true, set the edited task
-    // else,  show alert.
-    if(inputTask.value.length > 3){
-        // check if the inputDescription is written
-        // if true, display it within p element
-        // if false, display nothing
+    // Checking AM or PM
+    let amOrPm = date.getHours() < 12 ? "AM" : "PM";
+    // For using 12 hour format
+    let hour = date.getHours() > 12 ? date.getHours()-12 : date.getHours();
+    if (check(inputTask.value)){
         if(inputDescription.value){
             todoList.innerHTML += `<li id="listId${id}" class="list">
                                         <div>
                                         <p id="taskId${id}" class="task">${inputTask.value}</p>
                                         <div>
-                                        <img src="/assets/edit-regular.svg" onclick="editList(${id})">
-                                        <img src="/assets/trash-alt-regular.svg" onclick="deleteList(${id})">
+                                        <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
+                                        <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
                                         </div>
                                         </div>
                                         <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
-                                        <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
+                                        <span class="date">${months[date.getMonth()]} ${date.getDate()} ${hour}:${date.getMinutes()}${amOrPm}</span>
                                 
                                 </li>`;
-        listId++;
         }else{
             todoList.innerHTML += `<li id="listId${id}" class="list">
             <div>
             <p id="taskId${id}" class="task">${inputTask.value}</p>
             <div>
-            <img src="/assets/edit-regular.svg" onclick="editList(${id})">
-            <img src="/assets/trash-alt-regular.svg" onclick="deleteList(${id})">
+            <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
+            <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
             </div>
             </div>
             <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
-    
-    </li>`;
-        listId++;
+            </li>`;
         }
-    }else{
-        alert("Task should be longer than 3 words");
+        listId++;
+    }
+}
+// Checking the task input
+function check(input) {
+    if (input.length > 3 && inputTask.value.length <= 28){
+        return true;
+    }
+    if(input.length <= 3){
+        return alert("Task should be longer than 3 words!");
+    }
+    if(input.length > 28){
+        return alert("Task should not be longer than 28 words!");
     }
 }
 
 // Edit tasks from todo list
 function editList(id) {
     let currentTask = document.getElementById(`taskId${id}`);
-    let currentDescription = document.getElementById(`descriptionId${id}`);
     let editedTask = window.prompt("Edit your Task.", currentTask.innerText);
-    let editedDescription = window.prompt("Edit your Task Description.", currentDescription.innerText);
-    currentTask.innerText = editedTask;
-    currentDescription.innerText = editedDescription;
+    // To make sure
+    // If the input is changed, set them.
+    // If not, set the original value.
+    // While checking the input with check()
+    if(editedTask && check(editedTask)){
+        currentTask.innerText = editedTask;
+    }
+
+    let currentDescription = document.getElementById(`descriptionId${id}`) || false;
+    let editedDescription = currentDescription ? window.prompt("Edit your Task Description.", currentDescription.innerText) : false;
+
+    if(editedDescription){
+        currentDescription.innerText = editedDescription;
+    }
 }
 
 // Delete tasks from todo list
