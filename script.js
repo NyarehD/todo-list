@@ -4,10 +4,9 @@ const addButton = document.getElementById('addButton');
 const todoList = document.getElementById('todoList');
 let listId = 1;
 
-
+// For user input events.
 addButton.addEventListener("click", ()=>{
     inputTextToList(listId);
-    clear();
 });
 
 document.addEventListener("keydown", (e)=>{
@@ -29,11 +28,11 @@ function inputTextToList(id){
         if(inputDescription.value){
             todoList.innerHTML += `<li id="listId${id}" class="list">
                                         <div>
-                                        <p id="taskId${id}" class="task">${inputTask.value}</p>
-                                        <div>
-                                        <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
-                                        <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
-                                        </div>
+                                            <p id="taskId${id}" class="task">${inputTask.value}</p>
+                                            <div>
+                                                <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
+                                                <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
+                                            </div>
                                         </div>
                                         <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
                                         <span class="date">${months[date.getMonth()]} ${date.getDate()} ${hour}:${date.getMinutes()}${amOrPm}</span>
@@ -42,15 +41,16 @@ function inputTextToList(id){
         }else{
             todoList.innerHTML += `<li id="listId${id}" class="list">
             <div>
-            <p id="taskId${id}" class="task">${inputTask.value}</p>
-            <div>
-            <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
-            <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
-            </div>
+                <p id="taskId${id}" class="task">${inputTask.value}</p>
+                <div>
+                    <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
+                    <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
+                </div>
             </div>
             <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
             </li>`;
         }
+        clear();
         listId++;
     }
 }
@@ -71,17 +71,14 @@ function check(input) {
 function editList(id) {
     let currentTask = document.getElementById(`taskId${id}`);
     let editedTask = window.prompt("Edit your Task.", currentTask.innerText);
-    // To make sure
-    // If the input is changed, set them.
-    // If not, set the original value.
-    // While checking the input with check()
-    if(editedTask && check(editedTask)){
-        currentTask.innerText = editedTask;
-    }
+    let checked = check(editedTask);
+
+    // If edited task meet the requirements it will set the value from prompt.
+    // Else, recall the editList function to repeat.
+    (checked) ? currentTask.innerText = editedTask : editList(id);
 
     let currentDescription = document.getElementById(`descriptionId${id}`) || false;
     let editedDescription = currentDescription ? window.prompt("Edit your Task Description.", currentDescription.innerText) : false;
-
     if(editedDescription){
         currentDescription.innerText = editedDescription;
     }

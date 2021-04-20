@@ -4,8 +4,8 @@
     color: #003049;
 }
 body{
-    width: 100%;
     background-color: #eae2b7;
+    width: auto;
 }
 .flex-all-center{
     display: flex;
@@ -13,7 +13,8 @@ body{
     justify-content: center;
 }
 .todo{
-    width: 30%;
+    width: auto;
+
 }
 .todo > h1{
     text-align: center;
@@ -24,12 +25,12 @@ body{
 }
 .upperRow{
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
     height: 3em;
 }
 #inputTask{
     width: 85%;
-    font-size: 1.7em;
+    font-size: 1.5em;
     overflow: auto;
     border: 1px solid rgba(255, 255, 255, 0.322);
     border-radius: 1em;
@@ -39,6 +40,7 @@ body{
 }
 #addButton{
     width: 15%;
+    box-shadow: 10px 10px black;
 }
 .lowerRow{
     margin-top: 0.5em;
@@ -95,7 +97,6 @@ body{
     font-weight: 700;
     font-size: 22px;
     width: 80%;
-    overflow: wrap;
 }
 .list > div > div { 
     flex: 1 20%;
