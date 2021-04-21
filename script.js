@@ -36,8 +36,8 @@ function inputTextToList(id){
                                         </div>
                                         <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
                                         <span class="date">${months[date.getMonth()]} ${date.getDate()} ${hour}:${date.getMinutes()}${amOrPm}</span>
-                                
                                 </li>`;
+            clear();
         }else{
             todoList.innerHTML += `<li id="listId${id}" class="list">
             <div>
@@ -49,21 +49,18 @@ function inputTextToList(id){
             </div>
             <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
             </li>`;
+            clear();
         }
-        clear();
         listId++;
     }
 }
 // Checking the task input
 function check(input) {
-    if (input.length > 3 && inputTask.value.length <= 28){
+    if (input.length > 3){
         return true;
     }
     if(input.length <= 3){
         return alert("Task should be longer than 3 words!");
-    }
-    if(input.length > 28){
-        return alert("Task should not be longer than 28 words!");
     }
 }
 

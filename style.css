@@ -5,16 +5,19 @@
 }
 body{
     background-color: #eae2b7;
-    width: auto;
+    min-height: 740px;
+    max-width: 360px;
+    position: relative;
 }
 .flex-all-center{
     display: flex;
-    align-items: center;
+    flex-flow: row wrap;
+    align-items: flex-start;
     justify-content: center;
 }
 .todo{
-    width: auto;
-
+    flex: 5 1 360px;
+    order: 1;
 }
 .todo > h1{
     text-align: center;
@@ -30,7 +33,7 @@ body{
 }
 #inputTask{
     width: 85%;
-    font-size: 1.5em;
+    font-size: 1.4em;
     overflow: auto;
     border: 1px solid rgba(255, 255, 255, 0.322);
     border-radius: 1em;
@@ -40,7 +43,7 @@ body{
 }
 #addButton{
     width: 15%;
-    box-shadow: 10px 10px black;
+    text-shadow: 10px 10px black;
 }
 .lowerRow{
     margin-top: 0.5em;
@@ -67,8 +70,6 @@ body{
 #todoList > li{
     margin: 5px 0;
 }
-
-
 .list{
     background-color: #fcbf49;
     width: 100%;
@@ -93,13 +94,19 @@ body{
 .list > div > *{
     margin: 0;
 }
+.list > div > p::first-letter{
+    text-transform: uppercase;
+}
 .task{
-    font-weight: 700;
+    font-weight: 600;
     font-size: 22px;
     width: 80%;
+    word-wrap: break-word;
 }
 .list > div > div { 
     flex: 1 20%;
+    display: flex;
+    justify-content: space-evenly;
 }
 .list > div > div > img:first-of-type{
     width: 36%;
@@ -109,5 +116,58 @@ body{
 }
 .description{
     flex: 1 100%;
-    font-size: 18px;
+    font-size: 20px;
+}
+.date{
+    font-size: 15px;
+}
+.support{
+    order: 2;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+.support > ul {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+.support > ul > li{
+    margin: 6px 2px;
+}
+.social{
+}
+.social > img {
+    margin-right: 10px;
+}
+.social > img[alt="facebook"]{
+    width: 17px;
+}
+.social > img[alt="twitter"]{
+    width: 24px;
+}
+.social > img[alt="github"]{
+    width: 24px;
+}
+.to-top{
+    width: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+/* For tablet sized screen */
+@media screen and (min-width: 600px) {
+
+    .todo{
+        width: 50%;
+    }
+}
+/* For Laptop sized screen */
+@media screen and (min-width: 800px) {
+    .todo{
+        width: 30%;
+    }
 }
