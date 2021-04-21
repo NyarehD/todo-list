@@ -4,20 +4,35 @@
     color: #003049;
 }
 body{
-    background-color: #eae2b7;
-    min-height: 740px;
+    background:linear-gradient(30deg,rgb(230, 114, 61), rgb(185, 243, 26), rgb(35, 211, 167), rgb(173, 22, 136)); 
+    background-size: 400% 400%;
     max-width: 360px;
-    position: relative;
+    animation: gra 4s ease infinite;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes gra {
+    0%{
+        background-position: 0% 50%;
+    }50%{
+        background-position: 100% 50%;
+    }100%{
+        background-position: 0% 50%;
+    }
 }
 .flex-all-center{
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 .todo{
+    min-height: 600px;
     flex: 5 1 360px;
     order: 1;
+    position: relative;
 }
 .todo > h1{
     text-align: center;
@@ -101,7 +116,7 @@ body{
     font-weight: 600;
     font-size: 22px;
     width: 80%;
-    word-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 .list > div > div { 
     flex: 1 20%;
@@ -117,17 +132,20 @@ body{
 .description{
     flex: 1 100%;
     font-size: 20px;
+    overflow-wrap: anywhere;
 }
 .date{
     font-size: 15px;
 }
 .support{
+    align-self: flex-end;
     order: 2;
     position: relative;
     bottom: 0;
     left: 0;
     padding: 0;
     margin-top: 20px;
+    margin-bottom: -20px;
 }
 .support > ul {
     display: flex;
@@ -154,20 +172,23 @@ body{
 }
 .to-top{
     width: 50px;
-    position: absolute;
-    bottom: 10px;
+    position: fixed;
+    bottom: 50px;
     right: 10px;
+}
+.to-top > img{
+    width: 50px;
 }
 /* For tablet sized screen */
 @media screen and (min-width: 600px) {
 
-    .todo{
+    body{
         width: 50%;
     }
 }
 /* For Laptop sized screen */
 @media screen and (min-width: 800px) {
-    .todo{
+    body{
         width: 30%;
     }
 }

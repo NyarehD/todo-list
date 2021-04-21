@@ -7,33 +7,35 @@
     <title>ToDo List</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="flex-all-center">
-    <div class="todo">
-        <h1>Todo List</h1>
-        <div class="inputSection">
-            <div class="upperRow">
-                <input id="inputTask" placeholder="Task Name" type="text" tabindex="1">
-                <img src="assets/plus-circle-solid.svg" alt="Plus Icon" id="addButton" tabindex="3">
+<body id="top">
+    <div class="flex-all-center">
+        <div class="todo">
+            <h1>Todo List</h1>
+            <div class="inputSection">
+                <div class="upperRow">
+                    <input id="inputTask" placeholder="Task Name" type="text" tabindex="1">
+                    <img src="assets/plus-circle-solid.svg" alt="Plus Icon" id="addButton" tabindex="3">
+                </div>
+                <div class="lowerRow">
+                    <input id="inputDescription" name="description" placeholder="Description (Optional)" tabindex="2">
+                </div>
             </div>
-            <div class="lowerRow">
-                <input id="inputDescription" name="description" placeholder="Description (Optional)" tabindex="2">
+            <div class="todoListContainer">
+                <ul id="todoList">
+    
+                </ul>
             </div>
+            <a href="#top" class="to-top"><img src="/assets/arrow-circle-up-solid.svg" alt="arrow-circle-up-solid"></a>
         </div>
-        <div class="todoListContainer">
-            <ul id="todoList">
-
+        <div class="support">
+            <ul type="none">
+                <li><a href="https://www.facebook.com/nyarehd" class="social"><img src="/assets/facebook-f-brands.svg" alt="facebook">Facebook</a></li>
+                <li><a href="https://twitter.com/NyarehD" class="social"><img src="/assets/twitter-brands.svg" alt="twitter">Twitter</a></li>
+                <li><a href="https://github.com/NyarehD" class="social"><img src="/assets/github-brands.svg" alt="github">Github</a></li>
             </ul>
         </div>
-        <a href="#inputTask" class="to-top"><img src="/assets/arrow-circle-up-solid.svg" alt="arrow-circle-up-solid">
     </div>
-    <div class="support">
-        <ul type="none">
-            <li><a href="https://www.facebook.com/nyarehd" class="social"><img src="/assets/facebook-f-brands.svg" alt="facebook">Facebook</a></li>
-            <li><a href="https://twitter.com/NyarehD" class="social"><img src="/assets/twitter-brands.svg" alt="twitter">Twitter</a></li>
-            <li><a href="https://github.com/NyarehD" class="social"><img src="/assets/github-brands.svg" alt="github">Github</a></li>
-        </ul>
-    </div>
-    </a>
     <script src="script.js"></script>
 </body>
 </html>
+
