@@ -29,25 +29,27 @@ function inputTextToList(id){
             todoList.innerHTML += `<li id="listId${id}" class="list">
                                         <div>
                                             <p id="taskId${id}" class="task">${inputTask.value}</p>
-                                            <div>
-                                                <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
-                                                <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
-                                            </div>
                                         </div>
+                                        <div>
                                         <p id="descriptionId${id}" class="description">${inputDescription.value}</p>
+                                        </div>
+                                        <div>
                                         <span class="date">${months[date.getMonth()]} ${date.getDate()} ${hour}:${date.getMinutes()}${amOrPm}</span>
+                                            <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
+                                            <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
+                                        </div>
                                 </li>`;
             clear();
         }else{
             todoList.innerHTML += `<li id="listId${id}" class="list">
             <div>
                 <p id="taskId${id}" class="task">${inputTask.value}</p>
-                <div>
-                    <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
-                    <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
-                </div>
             </div>
-            <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
+            <div>
+                <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
+                <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
+                <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
+            </div>
             </li>`;
             clear();
         }

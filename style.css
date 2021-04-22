@@ -1,53 +1,47 @@
 *{
+    font-family: 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #003049;
+    color:rgb(31, 6, 88);
 }
-body{
-    background:linear-gradient(30deg,rgb(230, 114, 61), rgb(185, 243, 26), rgb(35, 211, 167), rgb(173, 22, 136)); 
-    background-size: 400% 400%;
-    max-width: 360px;
-    animation: gra 4s ease infinite;
+#top{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-}
-@keyframes gra {
-    0%{
-        background-position: 0% 50%;
-    }50%{
-        background-position: 100% 50%;
-    }100%{
-        background-position: 0% 50%;
-    }
-}
-.flex-all-center{
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
+    background-color: #eae2b7;
 }
 .todo{
-    min-height: 600px;
-    flex: 5 1 360px;
-    order: 1;
+    flex: 1 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 340px;
+    min-height: 80vh;
+    max-width: 500px;
     position: relative;
 }
-.todo > h1{
+.todo > h1 {
     text-align: center;
 }
-/* Input Section */
 .inputSection{
-
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 .upperRow{
-    display: flex;
-    justify-content: center;
+    order: 1;
+    width: 100%;
     height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #inputTask{
     width: 85%;
+    height: 100%;
     font-size: 1.4em;
     overflow: auto;
     border: 1px solid rgba(255, 255, 255, 0.322);
@@ -55,13 +49,29 @@ body{
     padding: 0 15px;
     outline: none;
     background-color: rgba(255, 255, 255, 0.322);
+    font-weight: 100;
 }
 #addButton{
-    width: 15%;
-    text-shadow: 10px 10px black;
+    width: auto;
+    margin-left: 5px;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 6px rgb(104, 104, 104);
+    border: none;
+    transform: translateY(-6px);
+}
+#addButton:hover{
+    stroke: white;
+}
+#addButton:active{
+    transform: translateY(0px);
+    box-shadow: 0 2px rgb(104, 104, 104);
+    transition: 1s;
 }
 .lowerRow{
-    margin-top: 0.5em;
+    order: 2;
+    width: 100%;
+    margin: 10px 0 10px 0;
 }
 #inputDescription{
     font-family: monospace;
@@ -74,121 +84,76 @@ body{
     background-color: #fddb97;
     width: 100%;
 }
-
-/* To do list Section */
-
+.todoListContainer{
+    width: 100%;
+}
 #todoList{
     list-style-type: none;
-    width: 100%;
     padding: 0;
-}
-#todoList > li{
-    margin: 5px 0;
+    margin: 0;
 }
 .list{
-    background-color: #fcbf49;
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 1em;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    align-items: center;
-}
-.list > *{
-    margin: 10px 0;
-}
-.list > div{
+    align-items: flex-start ;
     width: 100%;
-    height: auto;
+    background-color: #fcbf49;
+    padding:  20px;
+    border-radius: 1em;
+    margin: 5px 0;
+}
+.list > div:first-of-type{
+    flex: 2 1 100%;
+}
+.task{
+    font-size: 25px;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+.task::first-letter{
+    text-transform: uppercase;
+}
+.list > div:nth-of-type(2) {
+    flex: 2 1 100%;
+}
+.list > div:nth-last-of-type(2) > p{
+    overflow-wrap: anywhere;
+    font-size: 100;
+}
+.list > div:last-of-type{
+    flex: 2 1 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
 }
-.list > div > *{
-    margin: 0;
+img[alt="edit"]{
+    flex: 1 1 10%;
+    order: 2;
+    width: 100%;
+    margin-right: 4px;
 }
-.list > div > p::first-letter{
-    text-transform: uppercase;
-}
-.task{
-    font-weight: 600;
-    font-size: 22px;
-    width: 80%;
-    overflow-wrap: anywhere;
-}
-.list > div > div { 
-    flex: 1 20%;
-    display: flex;
-    justify-content: space-evenly;
-}
-.list > div > div > img:first-of-type{
-    width: 36%;
-}
-.list > div > div > img:last-of-type{
-    width: 30%;
-}
-.description{
-    flex: 1 100%;
-    font-size: 20px;
-    overflow-wrap: anywhere;
+img[alt="delete"]{
+    flex: 1 1 7%;
+    order: 3;   
+    width: 100%;
 }
 .date{
-    font-size: 15px;
-}
-.support{
-    align-self: flex-end;
-    order: 2;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    padding: 0;
-    margin-top: 20px;
-    margin-bottom: -20px;
-}
-.support > ul {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    justify-content: center;
-}
-.support > ul > li{
-    margin: 6px 2px;
-}
-.social{
-}
-.social > img {
-    margin-right: 10px;
-}
-.social > img[alt="facebook"]{
-    width: 17px;
-}
-.social > img[alt="twitter"]{
-    width: 24px;
-}
-.social > img[alt="github"]{
-    width: 24px;
+    flex: 2 1 70%;
+    order: 1;
+    display: block;
+    width: auto;
 }
 .to-top{
-    width: 50px;
-    position: fixed;
-    bottom: 50px;
-    right: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 30px;
 }
 .to-top > img{
-    width: 50px;
+    width: 100%;
 }
-/* For tablet sized screen */
-@media screen and (min-width: 600px) {
-
-    body{
-        width: 50%;
-    }
-}
-/* For Laptop sized screen */
-@media screen and (min-width: 800px) {
-    body{
-        width: 30%;
-    }
+.support{
+    
 }
