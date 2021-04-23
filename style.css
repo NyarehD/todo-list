@@ -1,7 +1,9 @@
 *{
     font-family: 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
-    color:rgb(31, 6, 88);
+    color:rgb(22, 6, 58);
+    padding: 0;
+    margin: 0;
 }
 #top{
     display: flex;
@@ -11,18 +13,19 @@
     background-color: #eae2b7;
 }
 .todo{
+    scroll-behavior: smooth;
     flex: 1 100%;
     display: flex;
     flex-flow: column wrap;
     justify-content: flex-start;
     align-items: center;
-    min-width: 340px;
-    min-height: 80vh;
-    max-width: 500px;
+    min-height: 90vh;
+    max-width: 340px;
     position: relative;
 }
 .todo > h1 {
     text-align: center;
+    margin: 20px 0;
 }
 .inputSection{
     width: 100%;
@@ -66,7 +69,7 @@
 #addButton:active{
     transform: translateY(0px);
     box-shadow: 0 2px rgb(104, 104, 104);
-    transition: 1s;
+    transition: 0.15s;
 }
 .lowerRow{
     order: 2;
@@ -129,13 +132,13 @@
     align-items: center;
 }
 img[alt="edit"]{
-    flex: 1 1 10%;
+    flex: 1 1 8%;
     order: 2;
     width: 100%;
     margin-right: 4px;
 }
 img[alt="delete"]{
-    flex: 1 1 7%;
+    flex: 1 1 5%;
     order: 3;   
     width: 100%;
 }
@@ -146,14 +149,49 @@ img[alt="delete"]{
     width: auto;
 }
 .to-top{
-    position: absolute;
-    bottom: 10px;
+    position: sticky;
+    position: -webkit-sticky;
     left: 10px;
+    bottom: 10px;
     width: 30px;
 }
 .to-top > img{
     width: 100%;
 }
 .support{
-    
+    max-width: 340px;
+
+}
+.support > ul{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+.support a{
+    text-decoration: none;
+}
+.support a:hover{
+    color: rgba(31, 6, 88, 0.753);
+}
+.support > ul li{
+    flex: 2 1 33%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+img[alt="facebook"]{
+    width: 20px;
+}
+img[alt="twitter"]{
+    width: 30px;
+}
+img[alt="github"]{
+    width: 30px;
+}
+@media screen and (min-width: 460px) {
+    .todo, .support{
+        min-width: 70vh;
+    }
 }
