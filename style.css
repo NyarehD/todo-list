@@ -194,4 +194,13 @@ img[alt="github"]{
     .todo, .support{
         min-width: 70vh;
     }
+    .lowerRow, .todoListContainer{
+        width: 95%;
+    }
+    img[alt="edit"]{
+        flex: 1 1 4%;
+    }
+    img[alt="delete"]{
+        flex: 1 1 2%;
+    }
 }
