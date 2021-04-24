@@ -8,7 +8,7 @@ I just want to practise.
 
 ## Screenshots
 
-![Todo List Screenshot](/assets/Screenshot 2021-04-24 at 11-42-07 ToDo List.png`)
+![Todo List Screenshot](`/assets/Screenshot 2021-04-24 at 11-42-07 ToDo List.png`)
 
   
 ## Features
