@@ -22,8 +22,9 @@ function inputTextToList(id){
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     // Checking AM or PM
     let amOrPm = date.getHours() < 12 ? "AM" : "PM";
+    let hour24Format = date.getHours();
     // For using 12 hour format
-    let hour = date.getHours() > 12 ? date.getHours()-12 : date.getHours();
+    let hour = (hour24Format >= 12) ? hour24Format - 12 : hour24Format;
     if (check(inputTask.value)){
         if(inputDescription.value){
             todoList.innerHTML += `<li id="listId${id}" class="list">
@@ -35,8 +36,8 @@ function inputTextToList(id){
                                         </div>
                                         <div>
                                         <span class="date">${months[date.getMonth()]} ${date.getDate()} ${hour}:${date.getMinutes()}${amOrPm}</span>
-                                            <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
-                                            <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
+                                            <img src="assets/edit-regular.svg" onclick="new ChangeToDo(${id}).editList()" alt="edit">
+                                            <img src="assets/trash-alt-regular.svg" onclick="new ChangeToDo(${id}).deleteList()" alt="delete">
                                         </div>
                                 </li>`;
             clear();
@@ -46,9 +47,9 @@ function inputTextToList(id){
                 <p id="taskId${id}" class="task">${inputTask.value}</p>
             </div>
             <div>
-                <span class="date">${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}${amOrPm}</span>
-                <img src="assets/edit-regular.svg" onclick="editList(${id})" alt="edit">
-                <img src="assets/trash-alt-regular.svg" onclick="deleteList(${id})" alt="delete">
+                <span class="date">${months[date.getMonth()]} ${date.getDate()} ${hour}:${date.getMinutes()}${amOrPm}</span>
+                <img src="assets/edit-regular.svg" onclick="new ChangeToDo(${id}).editList()" alt="edit">
+                <img src="assets/trash-alt-regular.svg" onclick="new ChangeToDo(${id}).deleteList()" alt="delete">
             </div>
             </li>`;
             clear();
@@ -58,38 +59,45 @@ function inputTextToList(id){
 }
 // Checking the task input
 function check(input) {
+    if(input.length === 0){
+        alert("Please insert task!")
+        return false;
+    }
     if (input.length > 3){
         return true;
     }
     if(input.length <= 3){
-        return alert("Task should be longer than 3 words!");
+        alert("Task should be longer than 3 words!")
+        return false;
     }
 }
 
-// Edit tasks from todo list
-function editList(id) {
-    let currentTask = document.getElementById(`taskId${id}`);
-    let editedTask = window.prompt("Edit your Task.", currentTask.innerText);
-    let checked = check(editedTask);
+// Edit or delete tasks from todo list
+class ChangeToDo{
+    constructor(id) {
+        this.id = id;
+        this.currentTask = document.getElementById(`taskId${this.id}`);
+    }
+    editList() {
+        const editedTask = window.prompt("Edit your Task.", this.currentTask.innerText);
 
-    // If edited task meet the requirements it will set the value from prompt.
-    // Else, recall the editList function to repeat.
-    (checked) ? currentTask.innerText = editedTask : editList(id);
+        // If edited task meet the requirements it will set the value from prompt.
+        // Else, recall the editList function to repeat.
+        check(editedTask) ? this.currentTask.innerText = editedTask : this.editList(this.id);
 
-    let currentDescription = document.getElementById(`descriptionId${id}`) || false;
-    let editedDescription = currentDescription ? window.prompt("Edit your Task Description.", currentDescription.innerText) : false;
-    if(editedDescription){
-        currentDescription.innerText = editedDescription;
+        const currentDescription = document.getElementById(`descriptionId${this.id}`) || false;
+        const editedDescription = currentDescription ? window.prompt("Edit your Task Description.", currentDescription.innerText) : false;
+        if(editedDescription) {
+            currentDescription.innerText = editedDescription;
+        }
+    }
+    deleteList(){
+        if(confirm(`Are you sure you want to delete this task: ${this.currentTask.innerHTML}?`)){
+            todoList.removeChild(document.getElementById(`listId${this.id}`));
+        }
     }
 }
 
-// Delete tasks from todo list
-function deleteList(id){
-    let currentTask = document.getElementById(`taskId${id}`);
-    if(confirm(`Are you sure you want to delete this task: ${currentTask.innerHTML}?`)){
-        todoList.removeChild(document.getElementById(`listId${id}`));
-    }
-}
 
 // For clearing input after adding task
 function clear(){
